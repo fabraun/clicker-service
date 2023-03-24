@@ -1,0 +1,31 @@
+version: '3'
+services:
+  clicker:
+    build: ./clicker/
+    networks:
+     - backend
+# Commented sample supplementary services. A web application with supporting database server can be configured
+# The web application should have some sort of XSS or XSRF (CSRF) vulnerability in it. When the malicious content is submitted
+# a separate action should be taken (php-curl, python requests, etc depending on backend tech) to post the exploit url and desired
+# cookie data to the clicker service. Example http://clicker:5000/clicker/. Clicker should only be exposed to a back end network.
+#  web:
+#    build: ./web/
+#    networks:
+#     - frontend
+#     - backend
+#    ports:
+#     - "8000:80"
+#    volumes:
+#     - ./public_html/:/var/www/html/
+#    depends_on:
+#     - db
+#     - clicker
+#  db:
+#    image: mariadb
+#    networks:
+#     - backend
+#    environment:
+#     - MYSQL_ROOT_PASSWORD=samplerootpassword
+networks:
+#  frontend:
+  backend:
